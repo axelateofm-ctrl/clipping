@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 50% -10%, #171a21 0%, #0a0b0d 55%);
+  color: #e6e8ee;
+  -webkit-font-smoothing: antialiased;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Barre de défilement discrète */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f3440;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .card {
+    @apply bg-ink-850/80 border border-white/5 rounded-xl2 shadow-card backdrop-blur-sm;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+      transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 hover:bg-brand-400 text-white shadow-lg shadow-brand-600/20;
+  }
+  .btn-ghost {
+    @apply btn bg-white/5 hover:bg-white/10 text-ink-100 text-slate-200;
+  }
+  .btn-danger {
+    @apply btn bg-red-500/15 hover:bg-red-500/25 text-red-300;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium;
+  }
+  .field-label {
+    @apply block text-xs font-medium text-slate-400 mb-1.5;
+  }
+  .input {
+    @apply w-full rounded-lg bg-ink-900 border border-white/10 px-3 py-2 text-sm text-slate-100
+      outline-none focus:border-brand-500/60 focus:ring-2 focus:ring-brand-500/20;
+  }
+}
+
+/* Animation douce d'apparition */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
